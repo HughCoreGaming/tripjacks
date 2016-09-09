@@ -1,0 +1,10 @@
+<h2><?php echo $this->escape($this->user_info['name']);?> </h2>
+
+<div id="propic"style="border: 4px solid #333333;width: 200px;height: 250px;">
+    <?php if ($this->user_info['propic']==""): ?>
+    <img src="/venuepro/nopic.JPG" height="100%" width="100%"> 
+    <?php else: ?>
+ <img src="/venuepro/<?php echo $this->escape($this->user_info['propic']);?>" height="100%" width="100%"> 
+<?php endif; ?>
+</div>
+<a href="<?php echo $this->url(array('id' => $this->user_info['venueid']),  'admin-venues-upload', 'default', true); ?>">upload profile pic</a>

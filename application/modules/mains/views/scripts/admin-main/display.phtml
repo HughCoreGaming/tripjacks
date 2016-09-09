@@ -1,0 +1,41 @@
+
+
+
+<?php
+$this->headLink()->appendStylesheet('/css/main.css');
+$this->headScript()->appendFile('/js/form.js');
+?>
+
+
+
+
+
+<div id ="container">
+        
+    <div id ="left">----left col------
+    
+    
+    
+    <div id="images">
+        
+
+    <?php foreach ($this->images as $image): ?>
+    <img src="/mainuploads/<?php echo $this->escape($image); ?>" width="150" height="150" />    
+    <?php endforeach; ?>
+  </div>
+    
+    </div>
+   
+    <div id ="center">
+  
+        
+                <?php echo $this->main['body']; ?>
+
+
+</div>
+
+    <div id ="right">----right col------</div>
+
+</div>
+
+  

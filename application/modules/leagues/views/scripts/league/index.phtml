@@ -1,0 +1,195 @@
+<h2>League</h2>
+<?php if (count($this->Winterleague)): ?>
+
+
+<div id ="container">
+        
+    <div id ="left">&nbsp;</div>
+   
+    <div id ="center">
+        
+        <h2><?php echo date('Y');?></h2>
+
+<div id="tabContaier">
+	<ul>
+    	<li><a class="active" href="#tab1">Winter <?php echo date('Y');?></a></li>
+
+    	<li><a href="#tab2">Spring <?php echo date('Y');?></a></li>
+    	<li><a href="#tab3">Summer <?php echo date('Y');?></a></li>
+	<li><a href="#tab4">Autumn <?php echo date('Y');?></a></li>
+
+    </ul><!-- //Tab buttons -->
+    <div class="tabDetails">
+  	<div id="tab1" class="tabContents">
+            
+            
+            
+
+<table id="customers">
+<tr>
+  <th>Player</th>
+  <th>#</th>
+  <th>Played</th>
+  <th>Ave.</th>
+  <th>Total</th>
+</tr>
+
+
+
+
+        <?php foreach ($this->Winterleague as $r): ?>
+            <tr>
+                <td><?php echo $this->escape($r[4]); ?></td> 
+                <td><?php echo $this->escape($r[1]); ?></td> 
+                <td><?php echo $this->escape($r[2]); ?></td> 
+                <td><?php echo $this->escape($r[3]); ?></td> 
+                <td><?php echo $this->escape($r[0]); ?></td> 
+            </tr>
+
+        <?php endforeach; ?>
+
+    </table>
+
+
+
+
+</div><!-- //tab1 -->
+	
+
+
+<div id="tab2" class="tabContents">
+                
+
+<table id="customers">
+<tr>
+  <th>Player</th>
+  <th>#</th>
+  <th>Played</th>
+  <th>Ave.</th>
+  <th>Total</th>
+</tr>
+
+        <?php foreach ($this->Springleague as $r): ?>
+            <tr>
+                <td><?php echo $this->escape($r[4]); ?></td> 
+                <td><?php echo $this->escape($r[1]); ?></td> 
+                <td><?php echo $this->escape($r[2]); ?></td> 
+                <td><?php echo $this->escape($r[3]); ?></td> 
+                <td><?php echo $this->escape($r[0]); ?></td> 
+            </tr>
+
+        <?php endforeach; ?>
+
+    </table>
+            
+            </div><!-- //tab1 -->
+            
+       
+	<div id="tab3" class="tabContents">
+            
+            
+
+            
+<table id="customers">
+<tr>
+  <th>Player</th>
+  <th>#</th>
+  <th>Played</th>
+  <th>Ave.</th>
+  <th>Total</th>
+</tr>
+
+
+
+
+        <?php foreach ($this->Summerleague as $count=>$r): ?>
+            <tr>
+                <td><?php echo $this->escape($r[4]); ?></td> 
+                <td><?php echo $this->escape($r[1]); ?></td> 
+                <td><?php echo $this->escape($r[2]); ?></td> 
+                <td><?php echo $this->escape($r[3]); ?></td> 
+                <td><?php echo $this->escape($r[0]); ?></td> 
+            </tr>
+
+
+
+
+
+	<?php if ($this->countgames > 4): ?>
+
+		<?php if ($count == $this->percent): ?>
+
+			<tr id='customers2'>
+
+				<td id='customers2'></td>
+				<td id='customers2'></td>
+				<td id='customers2'></td>
+				<td id='customers2'></td>
+				<td id='customers2'></td>
+
+			</tr>
+			
+               <?php endif; ?>
+                        
+         
+                 <?php endif; ?>
+
+    <?php endforeach; ?>
+
+
+
+
+</table>
+            
+            
+
+
+</div><!-- //tab1 -->
+	<div id="tab4" class="tabContents">
+            
+            
+            
+
+<table id="customers">
+<tr>
+  <th>Player</th>
+  <th>#</th>
+  <th>Played</th>
+  <th>Ave.</th>
+  <th>Total</th>
+</tr>
+
+        <?php foreach ($this->Autumnleague as $r): ?>
+            <tr>
+                <td><?php echo $this->escape($r[4]); ?></td> 
+                <td><?php echo $this->escape($r[1]); ?></td> 
+                <td><?php echo $this->escape($r[2]); ?></td> 
+                <td><?php echo $this->escape($r[3]); ?></td> 
+                <td><?php echo $this->escape($r[0]); ?></td> 
+            </tr>
+
+        <?php endforeach; ?>
+
+    </table>   
+            
+
+
+</div><!-- //tab1 -->
+
+    
+    </div><!-- //tab Details -->
+</div>
+
+
+        <br><br>
+
+</div>
+    <div id ="right">&nbsp;</div>
+
+</div>
+
+
+
+<?php else: ?>
+    No League found
+<?php endif; ?>

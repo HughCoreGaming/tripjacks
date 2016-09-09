@@ -1,0 +1,61 @@
+<script type="text/javascript">
+    
+    var x = $(window).width(); 
+    var y = $(window).height(); 
+    
+    var startx = x/2-200;
+    var starty = y/2-130;
+    
+    var memberno = <?php echo $this->messages[1]; ?>;  
+    
+   
+ 
+    $(document).ready(function(){
+        
+              $(".loginoption").hide();
+        $(".regoption").hide();
+        $(".alertbox").hide();
+        
+         if (memberno != ""){
+        
+         $("#alertmemberno").html(memberno);
+        
+        $(".loginoption").hide();
+        $(".regoption").hide();
+        $(".alertbox").hide();
+
+        
+        $(".alertbox").css({
+            "left":startx,
+            "top":starty
+        });
+        
+        $(".alertbox").show();
+        
+        
+        $('#hidealert').click(function(){
+            $(".alertbox").hide();         
+        });
+        
+  
+    
+    }else{
+    
+         $(".loginoption").hide();
+        $(".regoption").hide();
+        $(".alertbox").hide();
+    }
+    
+      });
+
+    </script>
+
+<h2>Success</h2>
+<p style="color:white;"><?php echo $this->messages[0]; ?></p>
+<div class="alertbox">
+    <div id="alertmsg">Your Member Number is: </div>
+    <div id="alertmemberno"></div>
+    <br>
+    <button id ="hidealert">OK!</button>   
+</div>
+

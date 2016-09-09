@@ -1,0 +1,29 @@
+/* 
+    Document   : main
+    Created on : Oct 28, 2012, 12:45:46 PM
+    Author     : Hugh Templeton
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+    #container
+    {
+    border: 1px dotted red;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:5px;
+    margin-bottom:5px;
+    }
+    #right
+    {
+    float: right;
+    }
+    #left
+    {
+    float: left;
+    }
+    #center
+    {
+    border: 1px dotted green;
+    margin: 0 auto;
+    }

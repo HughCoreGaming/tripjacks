@@ -1,0 +1,35 @@
+<h2>View League</h2>
+<h3>
+  <?php echo $this->escape($this->league['name']); ?>
+</h3>
+
+<div id="propic"style="border: 4px solid #333333;width: 200px;height: 250px;">
+    <?php if ($this->league['propic']==""): ?>
+    <img src="/leagueupload/nopic.JPG" height="100%" width="100%"> 
+    <?php else: ?>
+ <img src="/leagueupload/<?php echo $this->escape($this->league['propic']);?>" height="100%" width="100%"> 
+<?php endif; ?>
+</div>
+<a href="<?php echo $this->url(array('id' => $this->league['leagueid']),  'admin-specials-upload', 'default', true); ?>">upload profile pic</a>
+
+
+
+<div id="container">
+  <div id="record">  
+    <table>
+      <tr>
+        <td class="key">Name:</td>
+        <td class="value">
+          <?php echo $this->escape($this->league['name']); ?>
+        </td>
+      </tr
+      <tr>
+        <td class="key">Description:</td>
+        <td class="value">
+          <?php echo $this->league['description']; ?>
+        </td>
+      </tr>
+      <tr>
+    </table>
+  </div>  
+</div>

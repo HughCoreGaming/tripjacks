@@ -1,0 +1,34 @@
+<h2>Game list</h2>
+<?php if (count($this->records)): ?>
+
+
+   <table id="game_dates">
+        <tr>
+            <th>Date</th>
+            <th>Information</th>
+    
+        </tr>
+
+      <?php foreach ($this->records as $r): ?>
+
+
+            <tr>
+
+            <?php if ($this->hasid == 1): ?>
+                <td><a href="<?php echo $this->url(array('bookingid' => $r['booking_gameid']), 'venues-bookingindex', 'default', true); ?>"><?php echo $this->escape($r['date']); ?></a></td>
+            <?php else: ?>
+                <td><?php echo $this->escape($r['date']); ?></td>
+            <?php endif; ?>
+
+            <td>  (click to pre-register for this game)  </td> 
+            
+            </tr>
+
+        <?php endforeach; ?>
+
+    </table>
+
+
+<?php else: ?>
+    No games found!
+<?php endif; ?>

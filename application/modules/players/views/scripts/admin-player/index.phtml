@@ -1,0 +1,76 @@
+
+<?php if (count($this->records)): ?>
+    <div id="records">
+        <h2>Players</h2>
+        <form method="post" action="
+              <?php echo $this->url(array(), 'admin-players-delete'); ?>">
+            <table>
+                <tr>
+                    <td></td>    
+
+                    <td class="key">
+                        Firstname:
+                    </td>
+                    <td class="key">
+                        Lastname:
+                    </td>
+                    <td class="key">
+                        Address:
+                    </td>
+                    <td class="key">
+                        Town:
+                    </td>
+                    <td class="key">
+                        County:
+                    </td>
+                    <td class="key">
+                        Postcode:
+                    </td>
+                    <td class="key">
+                        Membership Number:
+                    </td>
+                    <td class="key">
+                        Date of Birth:
+                    </td>
+                    <td class="key">
+                        Email:
+                    </td>
+
+                    <td></td>    
+                    <td></td>    
+                </tr>
+                <?php foreach ($this->records as $r): ?>
+                    <tr>
+                        <td><input type="checkbox" name="ids[]" value="<?php echo $r['playerid']; ?>" style="width:2px" /></td>
+
+                        <td><?php echo $this->escape($r['firstname']); ?></td>
+                        <td><?php echo $this->escape($r['lastname']); ?></td> 
+                        <td><?php echo $this->escape($r['address']); ?></td>
+                        <td><?php echo $this->escape($r['town']); ?></td>
+                        <td><?php echo $this->escape($r['postcode']); ?></td> 
+                        <td><?php echo $this->escape($r['county']); ?></td> 
+                        <td><?php echo $this->escape($r['memberno']); ?></td> 
+                        <td><?php echo $this->escape($r['dob']); ?></td> 
+                        <td><?php echo $this->escape($r['email']); ?></td> 
+                    <input type="hidden" name="userid" value="<?php echo $r['userid']; ?>"/>
+                    <td><a href="<?php echo $this->url(array('id' => $r['playerid']), 'admin-players-display'); ?>">Display</a></td>    
+                    <td><a href="<?php echo $this->url(array('id' => $r['playerid']), 'admin-players-update'); ?>">Update</a></td>    
+                    </tr>  
+                <?php endforeach; ?>
+                <tr>
+                    <td colspan="9"><input type="submit" name="submit" style="width:150px" value="Delete Selected" /></td>
+                </tr>
+
+            </table>
+            <a href="<?php echo $this->url(array(), 'admin-players-create'); ?>">Add new temp player</a>
+        </form>
+    </div>
+
+<?php else: ?>
+    <h2>No public players added yet! Add temps or wait for players to register</h2>
+    <table>
+        <tr>
+            <td colspan="9"><a href="<?php echo $this->url(array(), 'admin-players-create'); ?>">Add new temp player</a></td>
+        </tr> 
+    </table>
+<?php endif; ?>

@@ -1,0 +1,71 @@
+<h2>Game list</h2>
+<?php if ($this->slot_place != 16): ?>
+
+<?php
+$this->headLink()->appendStylesheet('/css/center.css');
+$this->headScript()->appendFile('/js/form.js');
+?>
+
+
+
+
+
+<div id ="container">
+        
+    <div id ="left">&nbsp;</div>
+   
+    <div id ="center">
+  
+
+
+    <table id="slot_booking">
+
+
+        <?php foreach ($this->names as $key => $r): ?>
+
+            <tr>
+                 <td>Player <?php echo $key+1; ?></td>
+                 <td> - </td>
+                <td><?php echo $r['name']; ?> </td>
+                <td> (Player pre registered) </td> 
+            </tr>
+
+        <?php endforeach; ?>    
+
+
+
+
+
+        <?php for ($this->slot_place; $this->slot_place <= 16; $this->slot_place++): ?>
+
+            <tr>
+                <td>Slot:   <?php echo $this->slot_place; ?> </td>
+                <td> - </td>
+              <td> (Login to book!) </td> 
+            </tr>
+
+        <?php endfor; ?>
+            
+            <?php else: ?>
+    Game full!
+<?php endif; ?>
+            
+            
+                                <tr>
+        <td><button onclick="history.go(-1)">Back</button></td>
+    </tr>
+       
+
+
+    </table>
+        
+                        
+</div>
+    <div id ="right">&nbsp;</div>
+
+</div>
+
+  
+
+
+

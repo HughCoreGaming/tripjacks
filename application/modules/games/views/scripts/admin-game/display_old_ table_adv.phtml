@@ -1,0 +1,758 @@
+<script type="text/javascript">
+    
+    
+             var sec = 10;   // set the seconds
+var min = 00;   // set the minutes
+
+
+    var count_timer = 1;
+    var small = 100;
+    var big  = 200;    
+    var s = small;
+    var b = big;
+    var the_blinds;
+    var sep = "/";
+    
+     
+    function countDown2() {
+
+        
+        $("#counter_2").empty();
+
+        $("#counter_3").css('display', 'none');
+        $("#counter_2").css('display', 'block');
+
+        $("#counter_3").hide();
+        $("#counter_2").show();
+        
+
+        sec--;
+        if (sec == -01) {
+            sec = 59;
+            min = min - 1;
+        } else {
+            min = min;
+        }
+        if (sec<=9) { sec = "0" + sec; }
+        time = (min<=9 ? "0" + min : min) + " : " + sec + " ";
+        document.getElementById('counter_2').innerHTML = time; 
+        SD=window.setTimeout("countDown2();", 1000);
+        if (min == '00' && sec == '00') {
+            sec = "00"; window.clearTimeout(SD);
+            if (count_timer == 11)
+            {
+                alert('Game Finnished!');
+            }else{
+                alert('Blinds Up!'); 
+                count_timer++; 
+                small = small+small; 
+                big  = big+big;  
+                the_blinds = small+sep+big; 
+                document.getElementById('round').innerHTML = "Round: "+count_timer;
+                document.getElementById('blinds').innerHTML = the_blinds; 
+min=00;
+sec = 10; 
+                countDown();
+            }
+        }
+    } 
+    
+        
+
+    function countDown() {
+        
+
+   
+        
+        $("#counter_3").empty();
+
+        $("#counter_3").css('display', 'block');
+        $("#counter_2").css('display', 'none');
+
+        $("#counter_2").hide();
+        $("#counter_3").show();
+     
+               
+        sec--;
+        if (sec == -01) {
+            sec = 59;
+            min = min - 1;
+        } else {
+            min = min;
+        }
+        if (sec<=9) { sec = "0" + sec; }
+        time = (min<=9 ? "0" + min : min) + " : " + sec + " ";
+        document.getElementById('counter_3').innerHTML = time;
+        SD=window.setTimeout("countDown();", 1000);
+        if (min == '00' && sec == '00') {
+            sec = "00"; window.clearTimeout(SD);
+            if (count_timer == 11)
+            {
+                alert('Game Finnished!');
+            }else{
+                alert('Blinds Up!'); 
+                count_timer++; 
+                small = small+small; 
+                big  = big+big;  
+                the_blinds = small+sep+big; 
+                document.getElementById('round').innerHTML = "Round: "+count_timer;
+                document.getElementById('blinds').innerHTML = the_blinds; 
+min=00;
+sec = 10; 
+                countDown2();
+            }
+        }
+    } 
+    
+    
+    var score = new Array();
+    
+function remove(id,playerid,count,vid,bookingid){
+    
+    var r=confirm("Are you sure this player is out?");
+    if (r==true)
+    {
+        $("#"+id).remove();
+        score.push(playerid); 
+        
+        if(score.length==count){
+ 
+            $.theScores(score,count,vid,bookingid);
+        } 
+    }
+    else
+    {
+        return false;
+    }  
+}
+
+    
+
+    
+    $(document).ready(function(){   
+    
+
+        
+        
+        
+        $("#timer").click(function(){  
+            $("#the_tables").hide();
+            $("#the_timer").show();
+        });
+        
+        $("#tables").click(function(){  
+            $("#the_timer").hide();
+            $("#the_tables").show();              
+        });
+        
+        $("#assemble").click(function(){  
+            $("#the_tables").show();
+            $("#timer").show();
+        });
+        
+        $("#the_timer").hide();
+        $("#timer").hide()
+        $("#counters_3").hide();
+        $("#counters_2").hide();
+        
+        $("#clock").hide();
+        $("#clock2").hide();
+        
+        
+        var the_blinds = small+sep+big;
+        $("#round").text("Round: "+count_timer);
+        $("#blinds").text(the_blinds);
+        
+        
+        $("#round").css('font-size', '32px');
+        $("#blinds").css('font-size', '32px');
+        $("#counter_2").css('font-size', '150px');
+        $("#counter_3").css('font-size', '150px');
+        
+
+                       
+    
+
+
+function dump(obj) {
+var out = '';
+for (var i in obj) {
+out += i + ": " + obj[i] + "\n";
+}
+
+alert(out);
+}
+
+function chunk(a, s){
+for(var x, i = 0, c = -1, l = a.length, n = []; i < l; i++)
+(x = i % s) ? n[c][x] = a[i] : n[++c] = [a[i]];
+return n;
+}
+
+
+
+
+jQuery.extend({
+playerOut: function(id) {
+
+$.ajax({
+    url: '/includes/getplayers.php',                      
+    type: "POST",
+    data: {h : id},                       
+    dataType: 'json',   
+    async: false
+});
+
+}
+});
+
+jQuery.extend({
+theScores: function(playerid,count,vid,ids) {
+
+$.ajax({
+    url: '<?php echo $this->url(array(), 'admin-games-ajaxinsertresults'); ?>',                      
+    type: "POST",
+    data: {
+        playerid : playerid,
+        count : count,
+        vid : vid,
+        ids : ids  
+    },                       
+    dataType: 'json',   
+    async: false
+});
+
+}
+}); 
+
+
+
+
+
+function the_timer(){
+
+$("#counter_2").empty();
+
+$("#counter_3").css('display', 'none');
+$("#counter_2").css('display', 'block');
+
+$("#counter_3").hide();
+$("#counter_2").show();
+
+$('#counter_2').countdown({
+image: 'images/digits.png',
+startTime: '1:00',
+timerEnd: function(){ if (count_timer == 11){alert('Game Finnished!');}else{ alert('Blinds Up!'); count_timer++; small = small+small; big  = big+big;   the_blinds = small+sep+big; $("#round").text("Round: "+count_timer); $("#blinds").text(the_blinds); the_timer_ini();}},
+format: 'mm:ss'
+});
+
+
+}
+
+
+function the_timer_ini(){
+
+$("#counter_3").empty();
+
+$("#counter_3").css('display', 'block');
+$("#counter_2").css('display', 'none');
+
+$("#counter_2").hide();
+$("#counter_3").show();
+
+
+$('#counter_3').countdown({
+image: 'images/digits.png',
+startTime: '1:00',
+timerEnd: function(){ if (count_timer == 11){alert('Game Finnished!');}else{ alert('Blinds Up!'); count_timer++; small = small+small; big  = big+big;  the_blinds = small+sep+big; $("#round").text("Round: "+count_timer); $("#blinds").text(the_blinds); the_timer();}},
+format: 'mm:ss'
+});
+
+
+}
+
+
+
+$("#timer_ini").click(function(){  
+$("#timer_ini").hide();
+$("#assemble").hide();
+$("#clock2").show();
+$("#counters_3").show();
+$("#the_timer").show();
+
+countDown(); 
+});
+
+
+function removeItem(array, item){
+    for(var i in array){
+        if(array[i]==item){
+            array.splice(i,1);
+            break;
+        }
+    }
+}
+
+
+
+
+function get_split(total_players){
+
+var tables=0;
+
+if (total_players >= 1 && total_players <= 8)
+  {
+  tables=1;
+  split = total_players / tables;
+  }
+else if (total_players >= 9 && total_players <= 16)
+  {
+  tables=2;
+  split = total_players / tables;
+  }
+else if (total_players >= 17 && total_players <= 24)
+  {
+  tables=3;
+  split = total_players / tables;
+  }
+  else if (total_players >= 25 && total_players <= 32)
+  {
+  tables=3;
+  split = total_players / tables;
+  }
+  else if (total_players >= 33 && total_players <= 40)
+  {
+  tables=3;
+  split = total_players / tables;
+  }
+ return split; 
+}
+
+function get_tables(total_players){
+
+var tables=0;
+
+if (total_players >= 1 && total_players <= 8)
+  {
+  tables=1;
+  split = total_players / tables;
+  }
+else if (total_players >= 9 && total_players <= 16)
+  {
+  tables=2;
+  split = total_players / tables;
+  }
+else if (total_players >= 17 && total_players <= 24)
+  {
+  tables=3;
+  split = total_players / tables;
+  }
+  else if (total_players >= 25 && total_players <= 32)
+  {
+  tables=3;
+  split = total_players / tables;
+  }
+  else if (total_players >= 33 && total_players <= 40)
+  {
+  tables=3;
+  split = total_players / tables;
+  }
+ return tables; 
+}
+
+
+
+
+
+function arrayShuffle(theArray) {
+ 	var len = theArray.length;
+	var i = len;
+	 while (i--) {
+	 	var p = parseInt(Math.random()*len);
+		var t = theArray[i];
+  		theArray[i] = theArray[p];
+	  	theArray[p] = t;
+ 	}
+};
+
+        
+    
+    
+    function ini(bookingid,tables,split,results,vid){
+        
+           
+            $('#the_table').empty();
+            $('#the_table').append('<div id ="table-1"></div>');
+            var table = $('#the_table').children();
+                 
+
+            
+            for (i = 1; i <= tables; i++){
+                
+               table.append('<div id="tablearea"><div id="pokertable"></div></div>');
+            }
+            for (i = 0; i <= results.length-1; i++){
+
+                var temp = results[i];
+                
+                table.append( '<div id="droppable" class ="box'+i+'"><div id="draggable" class ="'+i+'">'+results[i].player+'<br><button onclick="remove('+i+','+results[i].pid+','+results.length+','+vid+','+bookingid+')">Man Down!</button></div></div>' );  
+            } 
+            
+        $('.0').draggable({ revert: "invalid" }); 
+        $('.1').draggable({ revert: "invalid" }); 
+        $('.2').draggable({ revert: "invalid" });
+        $('.3').draggable({ revert: "invalid" });   
+        $('.4').draggable({ revert: "invalid" });
+        $('.5').draggable({ revert: "invalid" });   
+        $('.6').draggable({ revert: "invalid" });
+        $('.7').draggable({ revert: "invalid" });
+        
+        
+        $('.box0').droppable(); 
+        $('.box2').droppable(); 
+        $('.box3').droppable();  
+        $('.box4').droppable();   
+        $('.box5').droppable(); 
+        $('.box6').droppable();         
+        $('.box7').droppable();       
+        $('.sort').droppable(); 
+
+        
+        var pos = $('#tablearea').offset();   
+        
+        
+        $(".box0 ").css({
+            position: "absolute",
+            top: pos.top+150 + "px",
+            left: pos.left + "px"
+        }).show();
+        
+        $(".box1").css({
+            position: "absolute",
+            top: pos.top + "px",
+            left: pos.left + "px"
+        }).show();
+        
+        $(".box2").css({
+            position: "absolute",
+            top: pos.top + "px",
+            left: pos.left+225 + "px"
+        }).show();
+        
+        $(".box3").css({
+            position: "absolute",
+            top: pos.top+ "px",
+            left: pos.left+450 + "px"
+        }).show();
+        
+        
+        $(".box4").css({
+            position: "absolute",
+            top: pos.top+150 + "px",
+            left: pos.left+450 + "px"
+        }).show();
+        
+        
+        $(".box5").css({
+            position: "absolute",
+            top: pos.top+300+ "px",
+            left: pos.left+450 + "px"
+        }).show();
+        
+        $(".box6").css({
+            position: "absolute",
+            top: pos.top+300+ "px",
+            left: pos.left+225 + "px"
+        }).show();
+        
+        
+        $(".box7").css({
+            position: "absolute",
+            top: pos.top+300+ "px",
+            left: pos.left + "px"
+        }).show();
+        
+
+
+
+
+
+        } 
+         
+
+
+
+
+    function MyClass() {
+        
+        var results = new Array();
+        var split;
+        var tables;
+        var total_players;
+        
+        //Setters and Getters Results
+        
+        this.getResults = function(){
+            return results;
+        };
+        
+        this.setResults = function(val){
+            results = val;
+        };
+        
+        //Setters and Getters Split
+        
+        this.getSplit = function(){
+            return split;
+        };
+        
+        this.setSplit = function(val){
+            split = val;
+        };
+        
+        //Setters and Getters tables
+        
+        this.getTables = function(){
+            return tables;
+        };
+        
+        this.setTables = function(val){
+            tables = val;
+        };
+        
+        //Setters and Getters Total Players
+        
+        this.getTotal_players = function(){
+            return total_players;
+        };
+        
+        this.setTotal_players = function(val){
+            total_players = val;
+        };
+        
+        
+        
+        this.displayTable = function(bookingid,tables,split,results,vid){
+            $('#the_table').empty();
+            $('#the_table').append('<table id ="table-1"><tbody></tbody></table>');
+            var table = $('#the_table').children();
+            $("#table-1 tbody").sortable({
+                revert: true
+            });
+         
+            for (i = 0; i <= results.length-1; i++){
+                var temp = results[i];
+                if(i==split){    
+                    table.append( '<tr><td>------</td></tr>' );
+                    table.append( '<tr><td>Table 2</td></tr>' );
+                    table.append( '<tr><td>-------</td></tr>' );
+                }
+                
+
+                 
+                table.append( '<tr id ="'+i+'"><td>'+results[i].player+'</td><td><button onclick="remove('+i+','+results[i].pid+','+results.length+','+vid+','+bookingid+')">Man Down!</button></td></tr>' );  
+            } 
+        } 
+        
+        
+        this.removeItem = function(item){
+            for(var i in results){
+                if(results[i]==item){
+                    results.splice(i,1);
+                    break;
+                }
+            }
+        }
+    }
+    
+    
+    
+          
+var bookingid = <?php echo $this->bookingid; ?>; 
+var vid = <?php echo $this->venueid; ?>;
+var play = '<?php echo $this->players; ?>';
+var players = JSON.parse(play);
+
+var results = players;
+
+var field = new MyClass();
+field.value
+field.setResults(results);
+
+
+$('#assemble').click(function(){
+    
+    
+    
+    
+    var total_players;
+    var tables;
+    var split;
+
+    total_players = results.length;
+    tables = get_tables(total_players);
+    split = Math.round(get_split(total_players));
+       
+    ini(bookingid,tables,split,results,vid);
+ 
+    
+
+    
+});
+
+           
+  });   
+
+
+$(document).ready(function(){
+    
+    
+
+  
+  });
+ 
+    </script>
+    <style type="text/css">
+        
+        ul li{
+ list-style-type: none;
+    margin:12px;
+    position:absolute}
+        
+        
+      #blinds 
+      {
+          font-size:32px;
+           text-align: center;
+      }
+
+      #round 
+      {
+          font-size:32px;
+           text-align: center;
+      }
+      
+      
+      
+      br { clear: both; }
+      .cntSeparator {
+        font-size: 54px;
+        margin: 10px 7px;
+        color: #000;
+      }
+      .desc { margin: 7px 3px; }
+      .desc div {
+        float: left;
+        font-family: Arial;
+        width: 70px;
+        margin-right: 65px;
+        font-size: 13px;
+        font-weight: bold;
+        color: #000;
+      }
+      
+      .sort{
+          width:600px;
+          height:150px;
+          border-style:solid;
+          border-width:5px;
+      }
+      
+
+
+      
+    </style>
+
+
+
+
+
+    
+        
+        
+    <div id="outer">
+        <div id="container">
+            <div id="inner">
+                
+                <a href ="index">Home</a>
+                    
+                    
+                <div id ="the_timer">
+                    
+                    <div id="blinds"></div>       
+                    <button id="timer_ini">Initiate timer</button>
+                        
+                    <br>
+                    <br>
+                        
+                    <div id="counter_2" style="font-size:36px;"></div>
+                    <div id="counter_3" style="font-size:36px;"></div>
+                        
+                    <br>
+                    <br>
+                        
+                    <div id="round"></div>
+                    </br>
+                    </br>
+                    <button id="tables">Tables</button>   
+                    
+                </div>
+                    
+                    
+                    
+                
+                
+                <div id ="the_tables">
+                    </br>
+                    <div id="the_table"></div>
+                    </br>
+                    </br>
+                    <button id="timer">Timer</button>        
+                </div>
+                    
+                    
+                    
+                <button id="assemble">Assemble Seating</button> 
+                    
+            </div>
+        </div>
+</div>
+
+
+
+
+
+
+
+<div id ="container">
+
+    <div id ="left">&nbsp;</div>
+
+    <div id ="center">
+        
+
+        
+    </div>
+    
+    <div id ="right">&nbsp;</div>
+
+</div>
+
+
+
+
+        
+        
+    
+    
+        
+
+         
+         
+    
+  <div class="sort"></div>
+
+    
+
+
+                                  

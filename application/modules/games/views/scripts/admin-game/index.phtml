@@ -1,0 +1,66 @@
+
+<h2>Attendance Check</h2>
+<?php if (count($this->records)): ?>
+<div id ="container">
+
+    <div id ="left">&nbsp;</div>
+
+    <div id ="center">
+        
+          
+
+
+
+<div id="present">
+  <form enctype="application/x-www-form-urlencoded" method="post" action="
+      <?php echo $this->url(array(), 'admin-games-presentupdate'); ?>">
+    <table id ="attendance">
+      <tr>
+
+        <td class="key">
+            <b>NAME:</b>
+        </td>
+        <td class="key">
+            <b>PRESENT:</b>
+        </td>
+      </tr>
+      
+
+      
+       <td><input type="hidden" name="bookingid" value="<?php echo $this->bookingid; ?>"/></td>
+       <td><input type="hidden" name="venueid" value="<?php echo $this->venueid; ?>"/></td>
+       
+      <?php foreach ($this->records as $r):?>
+      <tr>    
+
+        <td><?php echo $this->escape($r['name']); ?></td>
+        <td><input type="checkbox" name="ids[]" value="<?php echo $r['playerid']; ?>" style="width:2px" /></td>
+      </tr>  
+      <?php endforeach; ?>
+      <br>
+      <tr>
+          <td>
+              <input type="radio" name="times" checked="checked" value="normal">Normal Times
+              <input type="radio" name="times" value="demo">Demo Times
+          </td>
+      </tr>
+      <tr>
+        <td colspan="9"><input type="submit" name="submit" style="width:150px" value="Proceed to game!" /></td>
+      </tr>    
+    </table>
+  </form>
+</div>
+
+
+
+       
+    </div>
+    
+    <div id ="right">&nbsp;</div>
+
+</div>
+
+     
+<?php else: ?>
+No records found
+<?php endif; ?>

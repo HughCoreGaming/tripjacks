@@ -1,0 +1,133 @@
+<h2>My Leagues</h2>
+<?php if (count($this->records)): ?>
+    <div id="records">
+
+        <table id="index_table">
+            <tr>
+
+                <td class="key">
+                    ID:
+                </td>
+                <td class="key">
+                    Name:
+                </td>
+
+
+            </tr>
+            <?php foreach ($this->records as $r): ?>
+                <tr>
+
+                    <td><?php echo $this->escape($r['leagueid']); ?></td>
+                    <td><?php echo $this->escape($r['name']); ?></td>
+
+                    <td><a href="<?php echo $this->url(array('id' => $r['leagueid']), 'admin-leagues-display'); ?>">Display</a></td>    
+                    <td><a href="<?php echo $this->url(array('id' => $r['leagueid']), 'admin-leagues-update'); ?>">Update</a></td> 
+                    <?php if ($this->count >= 1): ?>
+                        <td><a href="<?php echo $this->url(array('id' => $r['leagueid']), 'admin-leagues-index'); ?>">View</a></td>  
+                    <?php endif; ?>
+                    <td><a href="<?php echo $this->url(array('id' => $r['leagueid']), 'admin-leagues-createsub'); ?>">Add leagues</a></td>  
+                </tr>  
+
+                <?php if ($this->is == "yes" && $r['leagueid'] == $this->leagueid): ?>
+
+                    <?php if ($this->count2 > 0): ?>
+
+                        <form method="post" action="
+                              <?php echo $this->url(array(), 'admin-leagues-deletesub'); ?>">
+
+
+                            <table style="padding: 30px;">
+                                <tr>
+                                <p style="padding: 30px; font-family: grobold, sans-serif;">Leagues of <?php echo $this->escape($r['name']); ?></p>    
+
+                                </tr>
+                                <tr>
+                                    <td></td>    
+                                    <td class="key">
+                                        Name:
+                                    </td>  
+                                    <td></td>    
+                                </tr>
+
+
+                                <?php for ($i = 0; $i < $this->count2; ++$i) : ?>
+
+                                    <tr>
+                                        <td><input type="checkbox" name="ids[]" value="<?php echo $this->subleagues[$i]['subleagueid']; ?>" style="width:2px" /></td>
+                                        <td><?php echo $this->escape($this->subleagues[$i]['name']); ?></td>
+                                        <td><a href="<?php echo $this->url(array('id' => $this->subleagues[$i]['subleagueid']), 'admin-leagues-displaysub'); ?>">Display</a></td>    
+                                        <td><a href="<?php echo $this->url(array('id' => $this->subleagues[$i]['subleagueid']), 'admin-leagues-updatesub'); ?>">Update</a></td> 
+
+                                    </tr>
+
+                                <?php endfor; ?>
+                                <tr>
+                                    <td colspan="9"><input type="submit" name="submit" style="width:150px" value="Delete Selected" /></td>
+                                </tr>   
+
+
+                            <?php else: ?>
+
+                                <tr>
+                                    <td>No leagues added yet!</td>
+                                </tr>  
+
+                            <?php endif; ?>
+
+                        </table>
+                    </form>
+
+                <?php endif; ?>
+            <?php endforeach; ?>
+            <br> 
+            <br>
+            <tr>
+                <td colspan="9"><a href="<?php echo $this->url(array(), 'admin-leagues-create'); ?>">Add new league</a></td>
+            </tr> 
+        </table>
+
+    </div>
+
+    <br>
+    <br>
+
+    <div id="records">
+        <h2>Delete Leagues</h2>
+        <form method="post" action="
+              <?php echo $this->url(array(), 'admin-leagues-delete'); ?>">
+            <table id="index_table">
+                <tr>
+                    <td></td>    
+                    <td class="key">
+                        ID:
+                    </td>
+                    <td class="key">
+                        Name:
+                    </td>
+
+                    <td></td>    
+                </tr>
+                <?php foreach ($this->records as $r): ?>
+                    <tr>
+                        <td><input type="checkbox" name="ids[]" value="<?php echo $r['leagueid']; ?>" style="width:2px" /></td>
+                        <td><?php echo $this->escape($r['leagueid']); ?></td>
+                        <td><?php echo $this->escape($r['name']); ?></td>
+                    </tr>
+                <?php endforeach; ?>
+
+                <tr>
+                    <td colspan="9"><input type="submit" name="submit" style="width:150px" value="Delete Selected" /></td>
+                </tr>   
+
+            </table>
+        </form>
+    </div>
+
+<?php else: ?>
+    No leagues added yet!
+    <table>
+        <tr>
+            <td colspan="9"><a href="<?php echo $this->url(array(), 'admin-leagues-create'); ?>">Add new league</a></td>
+        </tr> 
+    </table>
+<?php endif; ?>

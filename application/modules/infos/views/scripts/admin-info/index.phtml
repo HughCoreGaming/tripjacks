@@ -1,0 +1,48 @@
+<h2>Information Pages</h2>
+
+
+<?php if (count($this->records)): ?>
+<div id="records">
+  <form method="post" action="
+      <?php echo $this->url(array(), 'admin-infos-delete'); ?>">
+    <table>
+      <tr>
+        <td></td>    
+        <td class="key">
+          Info ID:
+        </td>
+        <td class="key">
+          Title:
+        </td>
+   
+        <td></td>    
+        <td></td>    
+      </tr>
+      <?php foreach ($this->records as $r):?>
+      <tr>
+        <td><input type="checkbox" name="ids[]" value="<?php echo $r['infoid']; ?>" style="width:2px" /></td>
+        <td><?php echo $this->escape($r['infoid']); ?></td>
+        <td><?php echo $this->escape($r['title']); ?></td>
+        <td><a href="<?php echo $this->url(array('id' => $r['infoid']), 'admin-infos-display'); ?>">Display</a></td>    
+        <td><a href="<?php echo $this->url(array('id' => $r['infoid']), 'admin-infos-update'); ?>">Update</a></td>    
+      </tr>  
+      <?php endforeach; ?>
+      <tr>
+        <td colspan="9"><input type="submit" name="submit" style="width:150px" value="Delete Selected" /></td>
+      </tr> 
+            <tr>
+        <td colspan="9"><a href="<?php echo $this->url(array(), 'admin-infos-create'); ?>">Add new info page</a></td>
+      </tr> 
+       
+    </table>
+  </form>
+</div>
+
+<?php else: ?>
+No records found
+</br>
+<a href="<?php echo $this->url(array(), 'admin-infos-create'); ?>">Add new info page</a>
+<?php endif; ?>
+
+
+

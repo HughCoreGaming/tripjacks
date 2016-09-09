@@ -1,0 +1,64 @@
+
+<?php if (count($this->records)): ?>
+    <div id="records">
+        <h2>Public Venues</h2>
+        <form method="post" action="
+              <?php echo $this->url(array(), 'admin-venues-delete'); ?>">
+            <table>
+                <tr>
+                    <td></td>    
+                    <td class="key">
+                        Venue ID
+                    </td>
+                    <td class="key">
+                        Venue Name:
+                    </td>
+                    <td class="key">
+                        Address:
+                    </td>
+                    <td class="key">
+                        Town:
+                    </td>
+                    <td class="key">
+                        County:
+                    </td>
+                    <td class="key">
+                        Postcode:
+                    </td>
+                    <td class="key">
+                        Day:
+                    </td>
+                    <td class="key">
+                        Start:
+                    </td>
+                    <td></td>    
+                    <td></td>    
+                </tr>
+                <?php foreach ($this->records as $r): ?>
+                    <tr>
+                        <td><input type="checkbox" name="ids[]" value="<?php echo $r['venueid']; ?>" style="width:2px" /></td>
+                        <td><?php echo $this->escape($r['venueid']); ?></td>
+                        <td><?php echo $this->escape($r['name']); ?></td>
+                        <td><?php echo $this->escape($r['address']); ?></td>
+                        <td><?php echo $this->escape($r['town']); ?></td>
+                        <td><?php echo $this->escape($r['postcode']); ?></td> 
+                        <td><?php echo $this->escape($r['county']); ?></td> 
+                        <td><?php echo $this->escape($r['day']); ?></td> 
+                        <td><?php echo $this->escape($r['start']); ?></td> 
+                    <input type="hidden" name="userid" value="<?php echo $r['userid']; ?>"/>
+                    <td><a href="<?php echo $this->url(array('id' => $r['venueid']), 'admin-venues-display'); ?>">Display</a></td>    
+                    <td><a href="<?php echo $this->url(array('id' => $r['venueid']), 'admin-venues-update'); ?>">Update</a></td>    
+                    </tr>  
+                <?php endforeach; ?>
+                <tr>
+                    <td colspan="9"><input type="submit" name="submit" style="width:150px" value="Delete Selected" /></td>
+                </tr> 
+
+
+            </table>
+        </form>
+    </div>
+
+<?php else: ?>
+    <h2>No public venues added yet!</h2>
+<?php endif; ?>

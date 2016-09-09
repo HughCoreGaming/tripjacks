@@ -1,0 +1,12 @@
+<h2><?php echo $this->escape($this->user_info['firstname']);?> <?php echo $this->escape($this->user_info['lastname']);?></h2>
+
+      <div id="propic2" style="border:3px solid #FFFF00; width: 156px;  height: 156px; margin-bottom:50px; margin-left:auto; margin-right:auto; text-align: center;">
+                    <div id="propic" style="border:3px solid #FF0000; width: 150px; height: 150px; margin-bottom:50px; margin-left:auto; margin-right:auto; text-align: center;">
+    <?php if ($this->user_info['propic']==""): ?>
+    <img src="/playerpro/nopic.JPG" height="100%" width="100%"> 
+    <?php else: ?>
+ <img src="/playerpro/<?php echo $this->escape($this->user_info['propic']);?>" height="100%" width="100%"> 
+<?php endif; ?>
+</div></div>
+<a href="<?php echo $this->url(array(), 'admin-players-upload'); ?>">upload profile pic</a><br>
+<a href="<?php echo $this->url(array('id' => $this->user_info['playerid']), 'admin-players-update'); ?>">update details</a>

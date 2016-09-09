@@ -1,0 +1,31 @@
+<h2>View News Feed</h2>
+<h3>
+
+  <?php echo $this->escape($this->news['title']); ?> 
+</h3>
+
+<div id="container">
+  <div id="record">  
+    <table>
+      <tr>
+        <td class="key">Title:</td>
+        <td class="value">
+          <?php echo $this->escape($this->news['title']); ?>
+        </td>
+      </tr>
+      <tr>
+        <td class="key">Date:</td>
+        <td class="value">
+          <?php echo $this->escape($this->news['date']); ?>
+        </td>
+      </tr>
+      <tr>
+        <td class="key">Information:</td>
+        <td class="value">
+          <?php echo $this->news['newsinfo']; ?>
+        </td>
+      </tr>
+      <tr>
+    </table>
+  </div>  
+</div>

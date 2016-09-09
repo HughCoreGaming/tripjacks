@@ -1,0 +1,13 @@
+/* 
+    Document   : proflie
+    Created on : Nov 6, 2012, 11:06:52 AM
+    Author     : Hugh Templeton
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+#propic { 
+    border: 4px solid #333333;
+    width: 30px;
+    height: 100px;
+}

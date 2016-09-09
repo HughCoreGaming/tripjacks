@@ -1,0 +1,56 @@
+<?php
+$this->headLink()->appendStylesheet('/css/center.css');
+$this->headScript()->appendFile('/js/form.js');
+?>
+
+
+
+
+
+<div id ="container">
+        
+    <div id ="left">&nbsp;</div>
+   
+    <div id ="center">
+        <h2>TripjacksPACO News</h2>
+  
+          <?php foreach ($this->news as $r): ?>
+
+        
+        
+
+<?php $display = $r['title']; ?>
+<?php $display2 = $r['date']; ?>
+<?php $display3 = $r['newsinfo']; ?>
+
+
+
+
+
+
+
+    <a name="second%20item"></a><div class="news_body">
+        
+        <div class="news_heading">
+                <img src="arrow.jpg">     <?php echo $display ?>       </div>
+            <div class="date_style">             <?php echo $display2; ?>        </div>
+            <table class="text_layout"><td>
+                    <p>
+                        <?php echo $display3; ?>
+                    </p>
+                </td>
+
+
+            </table>
+
+        </div>
+
+   <?php endforeach; ?>
+
+</div>
+    <div id ="right">&nbsp;</div>
+
+</div>
+
+  
+

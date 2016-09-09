@@ -1,0 +1,76 @@
+<?php
+$this->headLink()->appendStylesheet('/css/main.css');
+$this->headScript()->appendFile('/js/form.js');
+?>
+
+
+
+
+<div id ="container">
+
+    <div id ="left">
+
+        <div id="venues">
+            <?php foreach ($this->leagues as $r): ?>
+                <div id="propic2" style="border:3px solid #FFFF00; width: 156px;  height: 156px; margin-bottom:50px; margin-left:auto; margin-right:auto; text-align: center;">
+                    <div id="propic" style="border:3px solid #FF0000; width: 150px; height: 150px; margin-bottom:50px; margin-left:auto; margin-right:auto; text-align: center;">
+                        
+                     <div id = "title"><p><?php echo $r['name']; ?></p></div>
+                      <div id = "title2"><p>League</p></div>
+                     
+
+                        <?php if ($r['propic'] == ""): ?>
+                            <a href="<?php echo $this->url(array('id' => $r['leagueid']), 'leagues-mainleagues', 'default', true); ?>"><img src="/leagueupload/nopic.JPG" height="100%" width="100%"> </a>
+                        <?php else: ?>
+                            <a href="<?php echo $this->url(array('id' => $r['leagueid']), 'leagues-mainleagues', 'default', true); ?>"><img src="/leagueupload/<?php echo $r['propic']; ?>" height="100%" width="100%"> </a> 
+                        <?php endif; ?>
+                     
+                    </div>
+                </div>
+
+    
+
+            <?php endforeach; ?>
+
+        </div>
+
+
+    </div>
+
+    <div id ="center">
+
+
+        <?php echo $this->main['body']; ?>
+
+
+    </div>
+    <div id ="right">
+
+
+        <div class="heading">News</div>
+        <?php foreach ($this->news as $r): ?>
+
+
+
+            <br>
+            <a href="<?php echo $this->url(array('id' => $r['newsid']), 'cms-display', 'default', true); ?>">
+
+                <div class="news_heading"><img class="news_img" src="/images/jackcard.jpg" width="30" height="40">
+                    <?php echo $r['title']; ?>
+
+
+                </div>
+
+            </a><div class="date_style">
+                <?php $newDate = date("d/m/Y", strtotime($r['date']));
+                echo $newDate ?>
+            </div>
+
+<?php endforeach; ?>
+
+    </div>
+
+</div>
+
+
+

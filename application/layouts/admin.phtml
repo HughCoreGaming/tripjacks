@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <base href="/" />
+
+    <?php
+    echo $this->jQuery()
+            ->setVersion('1.5.1')
+            ->setUiVersion('1.8.11')
+            ->enable()
+            ->uiEnable();
+
+    $this->headLink()->appendStylesheet('/css/admin.css');
+    $this->headLink()->appendStylesheet('/css/jquery-ui.css');
+    $this->headScript()->appendFile('/js/nav.js');
+    $this->headScript()->appendFile('/js/form.js');
+    $this->headScript()->appendFile('/js/test.js');
+    $this->headScript()->appendFile('/js/timepicker.js');
+
+    echo $this->headTitle();
+    echo $this->headMeta();
+    echo $this->headLink();
+    echo $this->headScript();
+
+    echo $this->jQuery();
+    ?>
+    
+    
+  </head>
+  <body>
+    <div id="header">
+        
+         <div id="header2">
+                
+                
+      <div id="logo">
+          <a href="<?php echo $this->url(array(), 'home'); ?>"><img alt="TripjacksPACO Logo" src="/images/Logo3.gif" width="270" height="120"/></a>
+
+      </div>
+         
+             <div id="menu_case">
+                 <div id="social">
+
+                     <a href="https://twitter.com/TripJacksPACo"><img alt="TripjacksPACO_Twitter" src="/images/twitter.png" width="50" height="50"/></a>
+
+                 </div>
+
+                 <div id="social2">
+
+                     <a href="https://www.facebook.com/pages/Tripjackspaco/266919163440892?fref=ts"><img alt="TripjacksPACO_Facebook" src="/images/facebook.png" width="50" height="50"/></a>
+
+                 </div>
+                 <div id="menu">
+              
+              <?php $session = new Zend_Session_Namespace('tripjacks.auth'); ?>
+              <p align="right" style="color: red; margin-right: 10px;"><?php echo $this->escape($session->name); ?></p>
+                  
+              <a href="<?php echo $this->url(array(), 'home'); ?>">Home</a>
+
+
+                  <?php if (Zend_Auth::getInstance()->hasIdentity()): ?>
+
+                      <?php $the_auth = Zend_Auth::getInstance()->getIdentity(); ?>
+
+                      <?php $access = $the_auth[0]["access"]; ?>
+
+                      <?php if ($access == "admin"): ?>
+
+                          <a href="<?php echo $this->url(array(), 'admin-cms-index'); ?>">Edit News</a>
+                          <a href="<?php echo $this->url(array(), 'admin-mains-index'); ?>">Edit Main</a>
+                          <a href="<?php echo $this->url(array(), 'admin-infos-index'); ?>">Edit Info</a>
+                          <a href="<?php echo $this->url(array(), 'admin-specials-index'); ?>">Edit Leagues</a>
+                          <a href="<?php echo $this->url(array(), 'admin-venues-index'); ?>">Edit Venues</a>
+                          <a href="<?php echo $this->url(array(), 'admin-players-index'); ?>">Edit Players</a>
+
+                      <?php endif; ?>
+
+                      <?php if ($access == "player"): ?>
+
+                          <a href="<?php echo $this->url(array('module' => 'leagues', 'controller' => 'league', 'action' => 'display'), 'default', true); ?>">Leagues</a>
+                          <a href="<?php echo $this->url(array('module' => 'venues', 'controller' => 'venue', 'action' => 'display'), 'default', true); ?>">Venues</a>
+                          <a href="<?php echo $this->url(array(), 'admin-players-profile'); ?>">Profile</a>
+
+                      <?php endif; ?>
+
+                      <?php if ($access == "venue"): ?>
+
+                          <a href="<?php echo $this->url(array('module' => 'leagues', 'controller' => 'league', 'action' => 'display'), 'default', true); ?>">Leagues</a>
+                          <a href="<?php echo $this->url(array('module' => 'venues', 'controller' => 'venue', 'action' => 'display'), 'default', true); ?>">Venues</a>
+                          <a href="<?php echo $this->url(array(), 'admin-venues-profile'); ?>">Profile</a>
+
+                      <?php endif; ?>
+
+                      <a href="<?php echo $this->url(array(), 'logout'); ?>">Logout</a>
+                      
+                  <?php else: ?>
+                      
+                      <a href="<?php echo $this->url(array('module' => 'leagues', 'controller' => 'league', 'action' => 'display'), 'default', true); ?>">Leagues</a>
+                      <a href="<?php echo $this->url(array('module' => 'venues', 'controller' => 'venue', 'action' => 'display'), 'default', true); ?>">Venues</a>
+                      <a href="<?php echo $this->url(array(), 'infos-index'); ?>">Info</a>
+                      <a href="<?php echo $this->url(array(), 'contact'); ?>">Contact</a>  
+                      <a class="reg">Register</a>
+                      <a href="<?php echo $this->url(array(), 'login'); ?>">Login</a>
+                      
+                  <?php endif; ?>
+</div>
+              </div>
+          </div>
+         </div>
+      
+         <div class="regoption">
+          <p style="font-size: 24px;font-weight: bold;color: black;">Please choose:</p>
+          <div id="menureg">
+              <a href="<?php echo $this->url(array(), 'players-create'); ?>">Player</a> 
+              <a href="<?php echo $this->url(array(), 'venues-create'); ?>">Venue</a> 
+          </div>
+      </div>
+      
+    
+    <div id="content">
+      <?php echo $this->layout()->content ?>
+    </div>
+    
+    <div id="footer">
+      <p>Copyright &copy; 2012 TripJacksPACO.</p>
+    </div>   
+  </body>
+</html>

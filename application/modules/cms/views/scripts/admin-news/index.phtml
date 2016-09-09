@@ -1,0 +1,50 @@
+<h2>List Items</h2
+
+
+<?php if (count($this->records)): ?>
+<div id="records">
+  <form method="post" action="
+      <?php echo $this->url(array(), 'admin-cms-delete'); ?>">
+
+    <table>
+      <tr>
+        <td></td>    
+        <td class="key">
+          News ID
+        </td>
+        <td class="key">
+          Title
+        </td>
+        <td class="key">
+          Date
+        <td></td>    
+        <td></td>    
+      </tr>
+      <?php foreach ($this->records as $r):?>
+      <tr>
+        <td><input type="checkbox" name="ids[]" value="<?php echo $r['newsid']; ?>" style="width:2px" /></td>
+        <td><?php echo $this->escape($r['newsid']); ?></td>
+        <td><?php echo $this->escape($r['title']); ?></td>
+        <td><?php echo $this->escape($r['date']); ?></td> 
+        <td><a href="<?php echo $this->url(array('id' => $r['newsid']), 'admin-cms-display'); ?>">Display</a></td>    
+        <td><a href="<?php echo $this->url(array('id' => $r['newsid']), 'admin-cms-update'); ?>">Update</a></td>    
+      </tr>  
+      <?php endforeach; ?>
+      <tr>
+        <td colspan="9"><input type="submit" name="submit" style="width:150px" value="Delete Selected" /></td>
+      </tr>   
+                  <tr>
+        <td colspan="9"><a href="<?php echo $this->url(array(), 'admin-cms-create'); ?>">Add new news feed</a></td>
+      </tr> 
+    </table>
+  </form>
+</div>
+
+<?php else: ?>
+No records found
+</br>
+<a href="<?php echo $this->url(array(), 'admin-cms-create'); ?>">Add new news feed</a>
+<?php endif; ?>
+
+
+  

@@ -1,0 +1,66 @@
+<h2>League List</h2>
+
+
+<?php
+$this->headLink()->appendStylesheet('/css/center.css');
+$this->headScript()->appendFile('/js/form.js');
+?>
+
+<div id ="container">
+        
+    <div id ="left">&nbsp;</div>
+   
+    <div id ="center">
+        
+      
+        
+
+    <table id="records">
+        
+        <?php if (count($this->league)): ?>
+        
+        <tr>
+            <th>Select Leagues</th>
+       
+        </tr>
+
+
+
+        <?php foreach ($this->league as $r): ?>
+            <tr>
+ <?php if ($r['propic'] == ""): ?>
+                            <td><img src="/subleagueupload/nopic.JPG" height="75px" width="75px"> </td>
+                        <?php else: ?>
+                            <td><img src="/subleagueupload/<?php echo $r['propic']; ?>" height="75px" width="75px"> </td>
+                        <?php endif; ?>
+            <td><a href="<?php echo $this->url(array('id' => $r['subleagueid']), 'leagues-specialindex', 'default', true); ?>"><?php echo $this->escape($r['name']); ?></a></td>
+
+            </tr>
+
+        <?php endforeach; ?>
+
+
+
+        
+          
+
+<?php else: ?>
+    No Leagues Added!
+<?php endif; ?>
+        
+             
+    <tr>
+        <td><button onclick="history.go(-1)">Back</button></td>
+    </tr>
+</table>
+
+
+</div>
+    <div id ="right">&nbsp;</div>
+
+</div>
+
+
+
+    
+    

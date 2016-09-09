@@ -1,0 +1,90 @@
+
+
+
+<?php
+$this->headLink()->appendStylesheet('/css/main.css');
+$this->headScript()->appendFile('/js/form.js');
+?>
+
+
+
+
+
+<div id ="container">
+
+    <div id ="left" style="color:#ffffff;">
+        <h2>User Guide</h2>
+        To add images:
+        <ol>
+            <li>In images box select 3 max images from destination.</li> 
+            <li>Find the image button on editor and click.</li>
+            <li>Copy and paste test below, repeat for each image</li>
+        </ol>
+        <ul>
+            <li>mainuploads/<?php echo $this->lastid; ?>_0.EXT</li> 
+            <li>mainuploads/<?php echo $this->lastid; ?>_1.EXT</li>
+            <li>mainuploads/<?php echo $this->lastid; ?>_2.EXT</li>
+        </ul>
+  
+   
+    </div>
+    
+    
+
+    <div id ="center">
+        <?php echo $this->form; ?>
+        <?php echo $this->setupEditor( 'main' ); ?>
+
+
+</div>
+
+        
+    <div id ="right" style="color:#ffffff;">
+        
+     
+<?php if (count($this->records)): ?>
+<div id="pics" style="margin-left: auto;margin-right: auto;">
+       <h2>Pictures</h2>
+  <form method="post" action="
+      <?php echo $this->url(array(), 'admin-mains-deletepic'); ?>">
+    <table>
+      <tr>
+        <td></td>    
+       
+        
+        
+        <td class="key">
+          Name:
+        </td>
+   
+        <td></td>    
+        <td></td>    
+      </tr>
+      <?php foreach ($this->records as $r):?>
+      <tr>
+        <td><input type="checkbox" name="ids[]" value="<?php echo $r['picsid']; ?>" style="width:2px" /></td>
+        <td><?php echo $this->escape($r['name']); ?></td>  
+      </tr>  
+      <input type="hidden" name="names" value="<?php echo $this->escape($r['name']); ?>">
+      <?php endforeach; ?>
+      <tr>
+        <td colspan="9"><input type="submit" name="submit" style="width:150px" value="Delete Selected" /></td>
+      </tr> 
+
+       
+    </table>
+  </form>
+</div>
+Use this Keith: upload/#choose pic name#
+<?php else: ?>
+No Pics added and them in Main index
+</br>
+<a href="<?php echo $this->url(array(), 'admin-mains-create'); ?>">Add new main page</a>
+<?php endif; ?>
+
+    </div>
+
+</div>
+
+  
+

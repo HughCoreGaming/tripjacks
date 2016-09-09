@@ -1,0 +1,71 @@
+
+<?php
+$this->headLink()->appendStylesheet('/css/main.css');
+$this->headScript()->appendFile('/js/form.js');
+?>
+
+
+
+
+
+<div id ="container">
+
+    <div id ="left">----left col------</div>
+   
+    <div id ="center">
+        <?php echo $this->form; ?>
+        <?php echo $this->setupEditor( 'info' ); ?>
+
+
+</div>
+
+        
+    <div id ="right" style="color: white;">
+        
+        <?php if (count($this->records)): ?>
+<div id="pics" style="margin-left: auto;margin-right: auto;">
+       <h2>Pictures</h2>
+  <form method="post" action="
+      <?php echo $this->url(array(), 'admin-mains-deletepic'); ?>">
+    <table>
+      <tr>
+        <td></td>    
+       
+        
+        
+        <td class="key">
+          Name:
+        </td>
+   
+        <td></td>    
+        <td></td>    
+      </tr>
+      <?php foreach ($this->records as $r):?>
+      <tr>
+        <td><input type="checkbox" name="ids[]" value="<?php echo $r['picsid']; ?>" style="width:2px" /></td>
+        <td><?php echo $this->escape($r['name']); ?></td>  
+      </tr>  
+      <input type="hidden" name="names" value="<?php echo $this->escape($r['name']); ?>">
+      <?php endforeach; ?>
+      <tr>
+        <td colspan="9"><input type="submit" name="submit" style="width:150px" value="Delete Selected" /></td>
+      </tr> 
+
+       
+    </table>
+  </form>
+</div>
+Use this Keith: upload/#choose pic name#
+<?php else: ?>
+No Pics added and them in Main index
+</br>
+<a href="<?php echo $this->url(array(), 'admin-mains-create'); ?>">Add new main page</a>
+<?php endif; ?>
+
+
+    </div>
+
+</div>
+
+  
+

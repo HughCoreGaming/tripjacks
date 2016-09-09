@@ -1,0 +1,104 @@
+<h1>Game list</h1>
+
+
+
+
+<div id ="container">
+        
+    <div id ="left">&nbsp;</div>
+   
+    <div id ="center">
+  
+
+
+     
+   <table id="game_dates">
+       
+   <h3 align="center">Venue Games</h3>
+   
+          <?php if (count($this->records)): ?>
+   
+        <tr>
+            <th>Date</th>
+            <th>Information</th>
+    
+        </tr>
+
+      <?php foreach ($this->records as $r): ?>
+
+
+            <tr>
+
+            <?php if ($this->hasid == 1): ?>
+                <td><a href="<?php echo $this->url(array('bookingid' => $r['booking_gameid'], 'venueid' => $this->venueid), 'admin-bookings-bookingindex', 'default', true); ?>"><?php $newDate = date("d/m/Y", strtotime($this->escape($r['date'])));echo $newDate; ?></a></td>
+            <?php else: ?>
+                <td><?php echo $this->escape($r['date']); ?></td>
+            <?php endif; ?>
+
+            <td>  (click to pre-register for this game)  </td> 
+            
+            <td> <?php echo $this->game_players->countPlaying($r['booking_gameid']);?> Players booked</td> 
+            
+            </tr>
+
+        <?php endforeach; ?>
+                        
+<?php else: ?>
+    <tr><td>No venue games found!</td></tr>
+<?php endif; ?>
+            
+   </table>
+            
+             <table id="game_dates">
+            
+           <h3 align="center">Skirmish Games</h3>
+           
+             <?php if (count($this->records2)): ?>
+      
+        <tr>
+            <th>Date</th>
+            <th>Information</th>
+    
+        </tr>
+            
+               <?php foreach ($this->records2 as $r2): ?>
+
+
+            <tr>
+
+            <?php if ($this->hasid == 1): ?>
+                <td><a href="<?php echo $this->url(array('bookingid' => $r2['booking_gameid'], 'venueid' => $this->venueid), 'admin-bookings-bookingindex', 'default', true); ?>"><?php $newDate = date("d/m/Y", strtotime($this->escape($r2['date'])));echo $newDate; ?></a></td>
+            <?php else: ?>
+                <td><?php echo $this->escape($r2['date']); ?></td>
+            <?php endif; ?>
+
+            <td>  (click to pre-register for this game)  </td> 
+            
+            <td> <?php echo $this->game_players->countPlaying($r2['booking_gameid']);?> Players booked</td> 
+            
+            </tr>
+            
+             <?php endforeach; ?>
+            
+     
+            <?php else: ?>
+   <tr><td>No skirmish games found!</td></tr>
+<?php endif; ?>
+            
+
+
+            
+                                            <tr>
+        <td><button onclick="history.go(-1)">Back</button></td>
+    </tr>
+
+    </table>
+
+                
+</div>
+    <div id ="right">&nbsp;</div>
+
+</div>
+
+  
+

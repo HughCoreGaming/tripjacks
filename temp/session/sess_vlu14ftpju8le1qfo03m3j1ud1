@@ -1,0 +1,1 @@
+tripjackspaco.auth|a:1:{s:4:"name";N;}tripjacks.auth|a:2:{s:4:"name";N;s:4:"user";a:4:{s:6:"userid";s:1:"1";s:8:"username";s:5:"admin";s:6:"access";s:5:"admin";s:4:"rand";s:4:"4257";}}Zend_Auth|a:1:{s:7:"storage";a:1:{i:0;a:5:{s:6:"userid";s:1:"1";s:8:"username";s:5:"admin";s:8:"password";s:32:"e4865c45ad6c9cb159fb53b5cf971d68";s:6:"access";s:5:"admin";s:4:"rand";s:4:"4257";}}}

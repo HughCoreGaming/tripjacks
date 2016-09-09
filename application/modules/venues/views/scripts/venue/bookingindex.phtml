@@ -1,0 +1,57 @@
+<h2>Game list</h2>
+<?php if ($this->slot_place != 24): ?>
+
+
+
+
+    <table>
+
+
+        <?php foreach ($this->names as $r): ?>
+
+            <tr>
+                <td> <?php echo $r['name']; ?> </td>
+                <td> (Player pre registered) </td> 
+            </tr>
+
+        <?php endforeach; ?>   
+
+
+
+
+
+        <?php for ($this->slot_place; $this->slot_place <= 24; $this->slot_place++): ?>
+
+            <tr>
+                <td>Slot:   <?php echo $this->slot_place; ?> </td>
+                <td><a href="<?php echo $this->url(array('id' => $r['booking_gameid'], 'trigger' => 'book'), 'venues-bookingindex2', 'default', true); ?>">Book Slot</a></td>
+            </tr>
+
+        <?php endfor; ?>
+            
+            <?php if ($this->slot_place >= 3&&$this->paid == 'No'): ?>
+            
+            <tr>
+                
+                 <td><a href="<?php echo $this->url(array('bookingid' => $r['booking_gameid'], 'trigger' => 'buy'), 'venues-bookingindex2', 'default', true); ?>">Buy Now!</a></td>
+            </tr>
+
+            <?php endif; ?>
+            
+                        <?php if ($this->paid == "Yes"): ?>
+            
+            <tr>
+                
+                            <td><a href="<?php echo $this->url(array('module' => 'venues', 'controller' => 'venue', 'action' => 'bookingindex', 'bookingid' => $r['booking_gameid'],  'trigger' => 'buy'), 'default', true); ?>">Enter Setup</a></td>
+            </tr>
+
+            <?php endif; ?>
+
+
+
+
+    </table>
+
+<?php else: ?>
+    Game full!
+<?php endif; ?>

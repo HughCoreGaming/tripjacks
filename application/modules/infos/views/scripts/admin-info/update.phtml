@@ -1,0 +1,39 @@
+<?php
+$this->headLink()->appendStylesheet('/css/main.css');
+$this->headScript()->appendFile('/js/form.js');
+?>
+
+
+
+
+
+<div id ="container">
+        
+    <div id ="left">----left col------</div>
+   
+    <div id ="center">
+        <?php echo $this->form; ?>
+        <?php echo $this->setupEditor( 'info' ); ?>
+
+
+</div>
+
+    <div id ="right">
+        
+        <h1>Photo Upload</h1>
+    
+    
+    <?php echo $this->uploadform; ?>
+    
+    
+    </div>
+
+</div>
+
+  
+
+
+
+<script>
+handleInputDisplayOnSelect('DisplayStatus', 'divDisplayUntil', new Array('1'));
+</script>

@@ -1,0 +1,266 @@
+body { 
+    min-height:400px;/* for good browsers*/
+    min-width:500px;/* for good browsers*/
+    margin: 0; 
+    padding: 0; 
+    font-family: 'Verdana', sans-serif;
+    color: black;
+
+    background-image: url(../images/orig_background2.jpg);
+
+    background-repeat:repeat-y;
+    background-size: 100%;
+    position: center;
+
+}
+
+body a {
+  text-decoration: none;
+  font-weight: bolder;
+  color: #FFFF00;
+}
+
+body a:hover {
+  text-decoration: underline;
+}
+
+#header {
+  height: 150px;
+
+  border-bottom: 3px solid #FF0000;
+  padding-bottom:3px;
+}
+
+#header2 {
+  height: 150px;
+  overflow:auto;
+
+  border-bottom: 3px solid #FFFF00;
+}
+
+
+#logo {
+  float: left;
+  padding-left: 50px;
+  padding-top: 10px;  
+}
+
+ul
+{
+list-style-type:none;
+margin:0;
+padding:0;
+overflow:hidden;
+}
+
+li
+{
+
+}
+
+.mainnav {
+float:left;
+background-image: url(../images/ms.jpg);
+display:block;
+width:192px;
+font-weight:bold;
+color:#860111;
+text-align:center;
+padding:4px;
+text-decoration:none;
+text-transform:uppercase;
+}
+
+
+
+.subnav {
+background-image: url(../images/ms.jpg);
+display:block;
+width:192px;
+font-weight:bold;
+color:#860111;
+text-align:center;
+padding:4px;
+text-decoration:none;
+text-transform:uppercase;
+}
+
+
+
+
+#menu {
+  float: right;
+  padding-top: 55px;
+  
+}
+
+#menu a {
+  color: #000000;
+  font-size: 12pt;
+  border: solid 4px #FF0000;
+  padding: 4px;
+  margin-left: 10px;
+  background: #FFFF00;
+  margin-right: 10px;
+  border-radius:5px;
+}
+
+#menu a:hover {
+  color: #FF0000;
+  border: solid 4px #FFFF00;
+  font-size: 12pt;
+  text-decoration: none;
+}
+
+
+#menureg {
+
+  padding-top: 55px;
+}
+
+#menureg a {
+  color: #000000;
+  font-size: 12pt;
+  border: solid 4px #FF0000;
+  padding: 4px;
+  margin-left: 10px;
+  background: #FFFF00;
+  margin-right: 10px;
+}
+
+#menureg a:hover {
+  color: #FF0000;
+  border: solid 4px #FFFF00;
+  font-size: 12pt;
+  text-decoration: none;
+}
+
+
+
+#content{
+  min-height: 400px;  
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+#footer {
+  float: right;
+  font-size: smaller;
+  background: #FFFF00;
+  border: solid 4px #FF0000;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #000000;
+  border-radius:5px;
+}
+
+#footer a {
+  color: black;
+}
+
+form dd {
+  margin: 0px;  
+  padding-bottom: 10px;
+}
+
+form input {
+  font-size: 12pt;
+}
+
+form label.required {
+  color: red;
+}
+
+form textarea {
+  font-size: 12pt;
+}
+
+form ul.errors {
+  padding: 0px;  
+  color: red;
+  font-weight: bolder;
+  list-style: none;
+}
+
+
+.reg{
+cursor:pointer
+}
+
+.login{
+cursor:pointer
+}
+
+.regoption{
+    position:absolute;
+    text-align: center;
+    left:0px;
+    top:0px;
+    z-index:50; 
+    width: 400px;
+    height: 200px;
+    color: #FFFFFF;
+    font-size: 12pt;
+    border: solid 4px #FF0000;
+    padding: 4px;
+    margin-left: 10px;
+    background: #FFFF00;
+    margin-right: 10px;
+    opacity:0.8;
+    filter:alpha(opacity=80); /* For IE8 and earlier */
+}
+
+#twitter{
+    float:left;
+    padding:5px;
+
+}
+
+#social{
+  
+    position:absolute;
+    left: 350px;
+    z-index: 61;
+    padding:5px;
+    text-align: center;
+    
+
+}
+
+
+#social2{
+  
+    position:absolute;
+    left: 400px;
+    z-index: 61;
+    padding:5px;
+    text-align: center;
+   
+
+}
+
+#card{
+    position:absolute;
+    width: 30px;
+    height: 40px;
+    position:absolute;
+    transform:rotate(30deg);
+    -ms-transform:rotate(30deg); /* Internet Explorer */
+    -moz-transform:rotate(30deg); /* Firefox */
+    -webkit-transform:rotate(30deg); /* Safari and Chrome */
+    -o-transform:rotate(30deg); /* Opera */
+    background-image: url(/images/jackcard.jpg);
+    background-size: contain;
+    background-repeat:no-repeat;
+    background-position:center; 
+    z-index:60; 
+}
+
+h1 { font-family: grobold, sans-serif; color: white; }
+
+h2 { font-family: grobold, sans-serif; color: white; }
+
+h3 { font-family: grobold, sans-serif; color: white; }
+

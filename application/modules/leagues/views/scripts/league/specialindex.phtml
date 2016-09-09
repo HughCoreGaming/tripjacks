@@ -1,0 +1,113 @@
+<h2>League</h2>
+
+
+
+
+
+<div id ="container">
+        
+    <div id ="left">&nbsp;</div>
+   
+    <div id ="center">
+        
+        <div id="intro">
+
+        
+        <h2><?php echo $this->escape($this->subleague[0]['name']); ?></h2>
+        <p><?php echo $this->escape($this->subleague[0]['description']); ?></p>
+        <p>Buy-in Price: £<?php echo $this->escape($this->subleague[0]['price']); ?></p>
+        <p>Qualifying Percentage: <?php echo $this->escape($this->subleague[0]['percent']); ?>%</p>
+        
+        </div>
+
+     
+               <?php if ($this->access == 'player' && $this->alreadyin == 'No' && $this->sex_access == 'ok'): ?>
+                <table>
+                <tr>
+                            
+                            <td><form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                                <input type="hidden" name="cmd" value="_xclick">
+                                <input type="hidden" name="business" value="646MHWRA2NRKQ">
+                                <input type="hidden" name="lc" value="GB">
+                                <input type="hidden" name="item_name" value="Tripjackspaco League Buyin">
+                                <input type="hidden" name="button_subtype" value="services">
+                                <input type="hidden" name="no_note" value="1">
+                                <input type="hidden" name="no_shipping" value="2">
+                                <input type="hidden" name="rm" value="1">
+                                <input type="hidden" name="amount" value="<?php echo $this->escape($this->subleague[0]['price']); ?>">
+                                <input type="hidden" name="custom" value="<?php echo $this->bookingid; ?>">
+                                <input type="hidden" name="return" value="http://tripjackspaco.com/admin/bookings/booking/buyleagueupdate/<?php echo $this->subleague[0]['subleagueid']; ?>/<?php echo $this->playerid; ?>">
+                      
+                                <input type="hidden" name="cancel_return" value="http://tripjackspaco.com/leagues/league/specialindex/<?php echo $this->subleague[0]['subleagueid']; ?>">
+                                <input type="hidden" name="currency_code" value="GBP">
+                                <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHosted">
+                                <input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal — The safer, easier way to pay online.">
+                                <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+                            </form>
+
+        
+                            
+                
+        
+                        </td>
+                </tr>
+            </table>
+
+                <?php endif; ?>
+        
+        <table>
+            <tr>
+
+                <td>
+                     <a href="<?php echo $this->url(array(), 'players-create'); ?>">Register as Player</a> 
+               </td>
+            </tr>
+        </table>
+
+     <?php if (count($this->league)): ?>              
+
+<table id="customers">
+<tr>
+  <th>Player</th>
+  <th>#</th>
+  <th>Played</th>
+  <th>Ave.</th>
+  <th>Total</th>
+</tr>
+
+
+
+
+        <?php foreach ($this->league as $r): ?>
+            <tr>
+                <td><?php echo $this->escape($r[4]); ?></td> 
+                <td><?php echo $this->escape($r[1]); ?></td> 
+                <td><?php echo $this->escape($r[2]); ?></td> 
+                <td><?php echo $this->escape($r[3]); ?></td> 
+                <td><?php echo $this->escape($r[0]); ?></td> 
+            </tr>
+
+        <?php endforeach; ?>
+
+    </table>
+        
+
+
+<?php else: ?>
+    No League found
+<?php endif; ?>
+    
+    <table>                
+    <tr>
+        <td><button onclick="history.go(-1)">Back</button></td>
+    </tr>
+</table>
+
+
+
+</div>
+    <div id ="right">&nbsp;</div>
+
+</div>
+
+

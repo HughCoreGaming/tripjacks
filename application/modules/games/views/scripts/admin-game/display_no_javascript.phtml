@@ -1,0 +1,148 @@
+    <form>
+        <input name="type" id="type" value="<?php echo $this->type; ?>" type="hidden">
+        <input name="times" id="times" value="<?php echo $this->times; ?>" type="hidden">
+        <input name="venueid" id="venueid" value="<?php echo $this->venueid; ?>" type="hidden">
+        <input name="bookingid" id="bookingid" value="<?php echo $this->bookingid; ?>" type="hidden">
+    </form>
+
+    <audio id="warning">
+        <source src="/sounds/warning2.mp3"></source>
+        <source src="/sounds/warning.wav"></source>
+            
+        Your browser isn't invited for super fun audio time.
+    </audio>
+        
+    <audio id="blindsup">
+        <source src="/sounds/blindsup2.mp3"></source>
+        <source src="/sounds/blindsup.wav"></source>
+            
+        Your browser isn't invited for super fun audio time.
+    </audio>
+
+    <div class="alertbox">
+        <div id="alertmsg">Are you sure this player is out? </div>
+        <div id="alertplayer"></div>
+        <br>
+        <button id ="alertno">No</button>
+        <button id ="alertyes">Yes</button>   
+    </div>
+    
+    <div class="new"></div>
+
+    <div id="outer">
+        <div id="container">
+            <div id="inner">    
+                
+                <a href ="index">Home</a>
+                <span id="dummy"></span>
+                
+                <div id="game_info">View Info</div>
+                <div id="hide_game_info">Hide Info</div>
+                
+                
+                <div id ="the_timer">
+                    <div id="blinds"></div>       
+                    <button id="timer_ini">Initiate timer</button>   
+                    <br>
+                    <br>     
+                    <div id="counter" style="font-size:36px;"></div>
+                    <br>
+                    <br>
+                    <div id="round"></div>
+                    </br>
+                    </br>
+                    <button id="tables">Tables</button>     
+                </div>
+                
+
+                <div id ="the_tables">
+                    </br>      
+                    <span id="leftinfo">&nbsp;
+
+                        <table id="tablestable">
+
+                            <tr><th align="center">TABLES</th></tr>                         
+                            <tr><td>                     
+                                    <p align="justify">Make sure tables are balanced: ie no more than one player difference pre table at any one time.
+                                        Make sure that when there are 16 (if there are 3 tables) or 8 (if there are 2 tables) players left, any additional tables are 'broken down'. Players from broken down tables fill in on other tables in order they sat at original table, where possible.</p>
+                                </td></tr>
+                        </table>
+                        <table id="eliminationstable">
+
+                            <tr><th align="center">ELIMINATIONS – Table imbalance</th></tr>
+                            <tr><td>   
+                                    <p align="justify">If re-balance is required after a player elimination, player is taken from donor table, from the corresponding seat: ie. 3rd after dealer to 3rd after dealer. Last before dealer to last before dealer, and so on.</p>
+                                </td></tr>
+
+                        </table>
+
+                    </span>
+                    
+                        
+                    <div id="the_table"></div>
+                                  
+                        
+                    <span id="rightinfo">&nbsp;
+                        
+                        <table id="roundstable">
+                            
+                            <tr><th></th><th>Rounds</th><th></th></tr>               
+                            <tr><td>Round 1</td><td></td><td>Round 6</td></tr>
+                            <tr><td>25/50</td><td></td><td>500/1000</td></tr>
+                                
+                            <tr><td>Round 2</td><td></td><td>Round 7</td></tr>
+                            <tr><td>50/100</td><td></td><td>750/1500</td></tr>                       
+                                
+                            <tr><td>Round 3</td><td></td><td>Round 8</td></tr>
+                            <tr><td>100/200</td><td></td><td>1000/2000</td></tr>
+                                
+                            <tr><td>Round 4</td><td></td><td>Round 9</td></tr>
+                            <tr><td>250/500</td><td></td><td>2000/4000</td></tr>
+                                
+                            <tr><td>Round 5</td><td></td><td>Round 10</td></tr>
+                            <tr><td>400/800</td><td></td><td>4000/8000</td></tr>
+ 
+                        </table>
+                        
+                        <table id="chipstable">
+                            <tr><th></th><th>Chips</th><th></th></tr>
+                            <tr><td>Green Chips</td><td></td><td>25</td></tr>
+                            <tr><td>Blue Chips</td><td></td><td>50</td></tr>                        
+                            <tr><td>Black Chips</td><td></td><td>100</td></tr>
+                            <tr><td>White Chips</td><td></td><td>1000</td></tr>                       
+                        </table>
+     
+                    </span>
+                    </br>
+                    </br>
+                    <button id="timer">Play</button>     
+                </div>
+                     
+                    
+                <div>
+                    <button id="assemble">Seat Players</button> 
+                    <button id="late">Late Comers</button> 
+                    <button id="hidelate">Hide Late Comers</button> 
+                
+                </div>
+                    
+                <div id="latecomers">                               
+                    <table id="latetable">
+                        <tr><td><h3>Start typing a username in the input field below:</h3></td></tr>  
+                        <form action=""> 
+                            <tr><td>Username: <input type="text" id="txt1" onkeyup="showHint(this.value)" /></td></tr>
+
+                            <tr><td>Search By: <input type="radio" name="option" checked="checked" value="memberno">Member Number 
+                                    <input type="radio" name="option" value="username">Username
+                                </td>
+                            </tr>
+                        </form>
+                        <tr><td> <p>Suggestions: <span style="cursor:pointer" id="txtHint"></span> (Click username to add player to game)</p> </td></tr>    
+                    </table>    
+                </div>
+                        
+                        
+            </div>
+        </div>
+    </div>
+     

@@ -1,0 +1,63 @@
+
+ <h1>League List</h1>
+
+<?php
+$this->headLink()->appendStylesheet('/css/center.css');
+$this->headScript()->appendFile('/js/form.js');
+?>
+
+
+<div id ="container">
+        
+    <div id ="left">&nbsp;</div>
+   
+    <div id ="center">
+        
+       
+        
+
+    
+            <table id="records">
+                <?php if (count($this->venue)): ?>
+                
+        <tr>
+            <th><h2>Select League</h2></th>
+       
+        </tr>
+
+
+
+        <?php foreach ($this->venue as $r): ?>
+            <tr>
+                     <?php if ($r['propic'] == ""): ?>
+                            <td><img src="/venuepro/nopic.JPG" height="75px" width="75px"> </td>
+                        <?php else: ?>
+                            <td><img src="/venuepro/<?php echo $r['propic']; ?>" height="75px" width="75px"> </td>
+                        <?php endif; ?>
+                <td><a href="<?php echo $this->url(array('id' => $r['venueid']), 'leagues-index', 'default', true); ?>"><?php echo $this->escape($r['name']); ?></a></td>
+              
+            </tr>
+
+        <?php endforeach; ?>
+            
+            <?php else: ?>
+    No Venues Added!
+<?php endif; ?>
+            
+            
+        <tr>
+        <td><button onclick="history.go(-1)">Back</button></td>
+    </tr>
+
+    </table>
+        
+
+</div>
+    <div id ="right">&nbsp;</div>
+
+</div>
+
+  
+
+
+

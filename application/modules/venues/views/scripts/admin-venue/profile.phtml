@@ -1,0 +1,176 @@
+<script>
+   
+    $(function() {
+        
+        $("#skirmish").hide();              
+        $("#skirm").click(function(){
+            $("#changetimes").hide(); 
+            $( "#skirmish" ).show();           
+        });
+        
+        $("#changetimes").hide();              
+        $("#times").click(function(){
+            $("#skirmish").hide();  
+            $( "#changetimes" ).show();           
+        });
+        
+    });
+    
+    
+    $(function() {
+        $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd' }).val();
+    });
+    
+    
+    $(document).ready(function(){            
+        
+        
+        
+        //add skirmish game
+        
+        $("#submitskirmish").click(function(){
+            
+            
+            var date = $('#datepicker').val();
+            var venueid = <?php echo $this->user_info['venueid'] ?>;
+            
+            //Validation
+            
+            if (date=="")
+            {
+                alert("Please select a date first!");
+                return false;
+            }
+            
+            
+            
+            $.ajax({ 
+                
+                type : 'POST',
+                url : 'admin/bookings/booking/skirmishsetup',
+                dataType : 'json',
+                data: {
+                    date : $('#datepicker').val(),
+                    venueid : venueid            
+                },
+                success: function(data)  {               
+                    $("#notice").html(data);                          
+                }
+                
+            });               
+        });
+        
+        //add update times
+        
+        $("#submittimes").click(function(){
+            
+            
+            var date = $('#timepicker').val();
+            var venueid = <?php echo $this->user_info['venueid'] ?>;
+           
+            $.ajax({ 
+                
+                type : 'POST',
+                url : 'admin/bookings/booking/changetimes',
+                dataType : 'json',
+                data: {
+                    time : $('#timepicker').val(),
+                    venueid : venueid            
+                },
+                success: function(data)  {               
+                    $("#notice2").html(data);                          
+                }
+                
+            });               
+        });
+        
+    });
+    
+</script>
+
+<div id ="container">
+
+    <div id ="left">
+        
+
+<h1 align="center"><?php echo $this->escape($this->user_info['name']); ?> </h1>
+
+
+              <div id="propic2" style="border:3px solid #FFFF00; width: 205px;  height: 255px; margin-bottom:50px; margin-left:auto; margin-right:auto; text-align: center;">
+                    <div id="propic" style="border:3px solid #FF0000; width: 200px; height: 250px; margin-bottom:50px; margin-left:auto; margin-right:auto; text-align: center;">
+        <?php if ($this->user_info['propic'] == ""): ?>
+            <img src="/venuepro/nopic.JPG" height="100%" width="100%"> 
+        <?php else: ?>
+            <img src="/venuepro/<?php echo $this->escape($this->user_info['propic']); ?>" height="100%" width="100%"> 
+        <?php endif; ?>
+    </div>
+              </div>
+    <a href="<?php echo $this->url(array(), 'admin-venues-upload'); ?>">Upload Profile Pic</a>
+
+
+    </div>
+    <div id ="center">
+<ul class="nav">
+  <li id="skirm">Create Skirmish</li>
+  <li><a href="<?php echo $this->url(array('id' => $this->escape($this->user_info['venueid'])), 'admin-venues-update'); ?>">Edit Info</li>
+  <li id="times">ChangeTimes</li>
+  <li><a href="<?php echo $this->url(array(), 'admin-venues-upload'); ?>">Upload Profile Pic</a></li>
+</ul>
+        <br>   
+<div id="info">
+    <h3>Venue Information:</h3>
+    <p><?php echo $this->escape($this->user_info['name']); ?></p>
+    <p><?php echo $this->escape($this->user_info['address']); ?></p>
+    <p><?php echo $this->escape($this->user_info['county']); ?></p>
+    <p><?php echo $this->escape($this->user_info['postcode']); ?></p>
+    <br>
+    <br>
+    <p>Venue Start Time: <?php echo $this->escape($this->user_info['start']); ?></p>
+    <p>Venue Weekly Game: <?php echo $this->escape($this->user_info['day']); ?></p>
+    <br>
+    <p>Contact Email: <?php echo $this->escape($this->user_info['email']); ?></p>
+</div>
+        
+  
+</div>
+<div id ="right">
+    
+    
+
+<div id="skirmish">
+    <div id="skirmish_inner">
+    <h3 align="center">Create Skirmish Game</h3>
+    <div id="notice" style="color:red; font-weight:bolder">
+    </div>
+    <table id="skirmishtable">
+        <tr><td>Date: <input id="datepicker" name="date" readonly="readonly" type="text"></td></tr>
+        <input name="venueid" id="venueid" value="<?php echo $this->venueid; ?>" type="hidden">
+        <tr><td></td></tr>
+        <tr><td><button id = "submitskirmish">Submit</button</td></tr>
+    </table>
+</div>
+</div>
+    
+    <div id="changetimes">
+    <div id="changetimes_inner">
+    <h3 align="center">Change Game times</h3>
+    <div id="notice2" style="color:red; font-weight:bolder">
+    </div>
+    <table id="skirmishtable">
+        <tr><td>Times: 
+            <select>
+  <option name="times" value="19:30">19:30</option>
+  <option name="times" value="20:00">20:00</option>
+</select>
+            </td></tr>
+        <input name="venueid" id="venueid" value="<?php echo $this->venueid; ?>" type="hidden">
+        <tr><td></td></tr>
+        <tr><td><button id = "submittimes">Submit</button</td></tr>
+    </table>
+</div>
+</div>
+    
+</div>
+
+</div>
+

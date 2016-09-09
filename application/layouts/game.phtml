@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <base href="/" />
+<?php
+echo $this->jQuery()
+        ->setVersion('1.5.1')
+        ->setUiVersion('1.8.11')
+        ->enable()
+        ->uiEnable();
+
+
+$this->headLink()->appendStylesheet('/css/game.css');
+$this->headLink()->appendStylesheet('/css/jquery-ui.css');
+$this->headScript()->appendFile('/js/countdown.js');
+$this->headScript()->appendFile('/js/jquery.sortable.js');
+$this->headScript()->appendFile('/js/vibrate.js');
+$this->headScript()->appendFile('/js/game.js');
+
+echo $this->headTitle();
+echo $this->headMeta();
+echo $this->headLink();
+echo $this->headScript();
+echo $this->jQuery();
+?>
+    </head>
+    <body>
+
+
+        <div id="content">
+            <?php echo $this->layout()->content ?>
+        </div>
+
+    </body>
+</html>

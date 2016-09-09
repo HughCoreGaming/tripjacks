@@ -1,0 +1,42 @@
+
+<?php if (count($this->records)): ?>
+
+<div id ="container">
+
+    <div id ="left">&nbsp;</div>
+
+
+
+    <div id ="center">
+        
+        <div id="records">
+
+     
+
+        
+        <div id="navigation">
+    <ul class="top-level">
+
+
+   
+      <?php foreach ($this->records as $r):?>
+
+        <li><a href="<?php echo $this->url(array('id' => $r['infoid']), 'infos-display'); ?>"><?php echo $r['title']; ?></a></li>   
+
+      <?php endforeach; ?>
+       </ul>
+</div>
+
+</div>             
+  
+    </div>
+
+    <div id ="right">&nbsp;</div>
+
+</div>
+    
+         
+<?php else: ?>
+No info pages found
+<?php endif; ?>
+
